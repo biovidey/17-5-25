@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17/5/25</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <iframe src="javascript:false" width="0" height="0" style="display: none;"></iframe><script type="text/javascript" async="" src="https://www.xplapcvqtwmw.com/hTc/rFour/bchess.min.js" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://d3g5ovfngjw9bw.cloudfront.net/xmicron.min.js" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://www.cdn4ads.com/Etfq/ryK/schess.min.js" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <style>
+        /* === CUSTOM CSS START === */
+        body {
+            color: #333;
+            background-color: #f8f9fa !important;
+            font-family: 'Nunito Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none !important;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .related-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5em;
+            padding: 1.5em;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px; /* Ruang antara video dan carousel */
+        }
+
+        .related-video {
+            border: none;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            color: #333;
+            text-align: left;
+            position: relative;
+            margin-bottom: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .related-video:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-video a.href {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* Aspect ratio 16:9 */
+            display: block;
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .related-video img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .related-video img.loading {
+            opacity: 0.7;
+        }
+
+        .related-video i.fa-solid.fa-circle-play {
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            color: #fff;
+            font-size: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .related-video a.href:hover + i.fa-solid.fa-circle-play {
+            opacity: 1;
+            color: #007bff;
+        }
+
+        h2.related-video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.75em;
+            margin-bottom: 0.25em;
+            color: #212529;
+            text-align: left;
+            padding: 0 0.75em;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+
+        p.related-video-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            text-align: left;
+            padding: 0 0.75em 0.75em 0.75em;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .related-video-actions {
+            padding: 0.75em;
+            text-align: left;
+        }
+
+        .share-button {
+            font-size: 0.85rem;
+            border-radius: 5px;
+            padding: 0.5em 0.75em;
+            background-color: #f8f9fa;
+            color: #007bff;
+            border: 1px solid #007bff;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .share-button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Modal Styling */
+        .modal-content {
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .modal-title {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .btn-close {
+            opacity: 0.7;
+        }
+
+        .btn-close:hover {
+            opacity: 1;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            border-radius: 5px;
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+            border-color: #545b62;
+        }
+
+        /* === RESPONSIVE CSS START === */
+        @media (max-width: 768px) {
+            .related-videos {
+                padding: 1em;
+                gap: 1em;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .related-video {
+                margin-bottom: 0.75em;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .related-videos {
+                padding: 0.75em;
+                gap: 0.75em;
+                grid-template-columns: 1fr;
+            }
+
+            .related-video {
+                margin-bottom: 0.5em;
+            }
+
+            h2.related-video-title {
+                font-size: 1rem;
+            }
+
+            p.related-video-description {
+                font-size: 0.85rem;
+            }
+
+            .related-video i.fa-solid.fa-circle-play {
+                font-size: 30px;
+            }
+        }
+        /* === RESPONSIVE CSS END === */
+        /* === CUSTOM CSS END === */
+    </style>
+</head>
+<body>
+
+    <div class="related-videos">
+          <article id="video-4126" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video zqya viral tiktok" data-frame="vidply.com" data-dom="https://vidply.com/d/zjmv49ip63bm" data-id="zjmv49ip63bm" id="play" class="href" href="javascript:void(0)" title="Video zqya viral tiktok" itemprop="url" alt="video Video zqya viral tiktok viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/8vf7959uq7lnpoq9.jpg" src="https://img.doodcdn.io/snaps/8vf7959uq7lnpoq9.jpg" alt="Video zqya viral tiktok" itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 01:12</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video zqya viral tiktok    </h2>
+                                     </article>
+   <article id="video-4125" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral zize azizah salsa" data-frame="vidply.com" data-dom="https://vidply.com/d/edme7x87xr0s" data-id="edme7x87xr0s" id="play" class="href" href="javascript:void(0)" title="Video viral zize azizah salsa" itemprop="url" alt="video Video viral zize azizah salsa viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/kcp65xm1awnihigj.jpg" src="https://img.doodcdn.io/snaps/kcp65xm1awnihigj.jpg" alt="Video viral zize azizah salsa" itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 01:21</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral zize azizah salsa    </h2>
+                                     </article>
+   <article id="video-4124" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral zahra seafood bakaran 6 ..." data-frame="vidply.com" data-dom="https://vidply.com/d/l45t5tkhxzga" data-id="l45t5tkhxzga" id="play" class="href" href="javascript:void(0)" title="Video viral zahra seafood bakaran 6 ..." itemprop="url" alt="video Video viral zahra seafood bakaran 6 ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/cg7ab04spnk5827i.jpg" src="https://img.doodcdn.io/snaps/cg7ab04spnk5827i.jpg" alt="Video viral zahra seafood bakaran 6 ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 06:27</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral zahra seafood bakaran 6 ...    </h2>
+                                     </article>
+   <article id="video-4123" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral tiktokers cantik baby p ..." data-frame="vidply.com" data-dom="https://vidply.com/d/ilup9iz91eqq" data-id="ilup9iz91eqq" id="play" class="href" href="javascript:void(0)" title="Video viral tiktokers cantik baby p ..." itemprop="url" alt="video Video viral tiktokers cantik baby p ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/o6jxqf63liv5zmu9.jpg" src="https://img.doodcdn.io/snaps/o6jxqf63liv5zmu9.jpg" alt="Video viral tiktokers cantik baby p ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 01:32</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral tiktokers cantik baby p ...    </h2>
+                                     </article>
+   <article id="video-4122" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral tiktok lifanna ambiyah  ..." data-frame="vidply.com" data-dom="https://vidply.com/d/8bvvw6oi7bo8" data-id="8bvvw6oi7bo8" id="play" class="href" href="javascript:void(0)" title="Video viral tiktok lifanna ambiyah  ..." itemprop="url" alt="video Video viral tiktok lifanna ambiyah  ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/kcb2xhspq1en2eto.jpg" src="https://img.doodcdn.io/snaps/kcb2xhspq1en2eto.jpg" alt="Video viral tiktok lifanna ambiyah  ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 01:58</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral tiktok lifanna ambiyah  ...    </h2>
+                                     </article>
+   <article id="video-4121" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral tiktok baby putie ngent ..." data-frame="vidply.com" data-dom="https://vidply.com/d/ravmupxgq77m" data-id="ravmupxgq77m" id="play" class="href" href="javascript:void(0)" title="Video viral tiktok baby putie ngent ..." itemprop="url" alt="video Video viral tiktok baby putie ngent ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/lpuibxrhbaoc0gmy.jpg" src="https://img.doodcdn.io/snaps/lpuibxrhbaoc0gmy.jpg" alt="Video viral tiktok baby putie ngent ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 07:56</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral tiktok baby putie ngent ...    </h2>
+                                     </article>
+   <article id="video-4120" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral syakirah tiktok colmek  ..." data-frame="vidply.com" data-dom="https://vidply.com/d/sssepes32qb7" data-id="sssepes32qb7" id="play" class="href" href="javascript:void(0)" title="Video viral syakirah tiktok colmek  ..." itemprop="url" alt="video Video viral syakirah tiktok colmek  ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/ekqrqaviz4mnk2l8.jpg" src="https://img.doodcdn.io/snaps/ekqrqaviz4mnk2l8.jpg" alt="Video viral syakirah tiktok colmek  ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 05:13</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral syakirah tiktok colmek  ...    </h2>
+                                     </article>
+   <article id="video-4119" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral skandal trustfunbbb tik ..." data-frame="vidply.com" data-dom="https://vidply.com/d/lv5f7t7jn47s" data-id="lv5f7t7jn47s" id="play" class="href" href="javascript:void(0)" title="Video viral skandal trustfunbbb tik ..." itemprop="url" alt="video Video viral skandal trustfunbbb tik ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/qab8i30m9c6uyg30.jpg" src="https://img.doodcdn.io/snaps/qab8i30m9c6uyg30.jpg" alt="Video viral skandal trustfunbbb tik ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 02:11</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral skandal trustfunbbb tik ...    </h2>
+                                     </article>
+   <article id="video-4118" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral skandal marion jola mj  ..." data-frame="vidply.com" data-dom="https://vidply.com/d/vst4zvm66jy3" data-id="vst4zvm66jy3" id="play" class="href" href="javascript:void(0)" title="Video viral skandal marion jola mj  ..." itemprop="url" alt="video Video viral skandal marion jola mj  ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/c6r7rzmvpnzsipw1.jpg" src="https://img.doodcdn.io/snaps/c6r7rzmvpnzsipw1.jpg" alt="Video viral skandal marion jola mj  ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 01:32</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral skandal marion jola mj  ...    </h2>
+                                     </article>
+   <article id="video-4117" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral siswa sma disepongin ko ..." data-frame="vidply.com" data-dom="https://vidply.com/d/o8u4xst8j8c9" data-id="o8u4xst8j8c9" id="play" class="href" href="javascript:void(0)" title="Video viral siswa sma disepongin ko ..." itemprop="url" alt="video Video viral siswa sma disepongin ko ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/dbg6lgqzqiru9qlp.jpg" src="https://img.doodcdn.io/snaps/dbg6lgqzqiru9qlp.jpg" alt="Video viral siswa sma disepongin ko ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 01:13</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral siswa sma disepongin ko ...    </h2>
+                                     </article>
+   <article id="video-4116" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral selebgram nadifa viral  ..." data-frame="vidply.com" data-dom="https://vidply.com/d/3ul4bmro3tcn" data-id="3ul4bmro3tcn" id="play" class="href" href="javascript:void(0)" title="Video viral selebgram nadifa viral  ..." itemprop="url" alt="video Video viral selebgram nadifa viral  ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/3x0nx1abrf6l9vm0.jpg" src="https://img.doodcdn.io/snaps/3x0nx1abrf6l9vm0.jpg" alt="Video viral selebgram nadifa viral  ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 06:04</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral selebgram nadifa viral  ...    </h2>
+                                     </article>
+   <article id="video-4115" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral selebgram adila vania n ..." data-frame="vidply.com" data-dom="https://vidply.com/d/7hro3is1qk56" data-id="7hro3is1qk56" id="play" class="href" href="javascript:void(0)" title="Video viral selebgram adila vania n ..." itemprop="url" alt="video Video viral selebgram adila vania n ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/ycsszzzj9p4chsb6.jpg" src="https://img.doodcdn.io/snaps/ycsszzzj9p4chsb6.jpg" alt="Video viral selebgram adila vania n ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 03:39</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral selebgram adila vania n ...    </h2>
+                                     </article>
+   <article id="video-4114" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral nabila live telegram ng ..." data-frame="vidply.com" data-dom="https://vidply.com/d/icb5r046n1cq" data-id="icb5r046n1cq" id="play" class="href" href="javascript:void(0)" title="Video viral nabila live telegram ng ..." itemprop="url" alt="video Video viral nabila live telegram ng ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/ej89e9gw6emsmas1.jpg" src="https://img.doodcdn.io/snaps/ej89e9gw6emsmas1.jpg" alt="Video viral nabila live telegram ng ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 14:39</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral nabila live telegram ng ...    </h2>
+                                     </article>
+   <article id="video-4113" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral mirip onic kayes" data-frame="vidply.com" data-dom="https://vidply.com/d/jcwx20vinxzp" data-id="jcwx20vinxzp" id="play" class="href" href="javascript:void(0)" title="Video viral mirip onic kayes" itemprop="url" alt="video Video viral mirip onic kayes viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/szuxjc9yg3fpnwvx.jpg" src="https://img.doodcdn.io/snaps/szuxjc9yg3fpnwvx.jpg" alt="Video viral mirip onic kayes" itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 02:16</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral mirip onic kayes    </h2>
+                                     </article>
+   <article id="video-4112" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral mirip livy renata colme ..." data-frame="vidply.com" data-dom="https://vidply.com/d/u41aa96zvy5g" data-id="u41aa96zvy5g" id="play" class="href" href="javascript:void(0)" title="Video viral mirip livy renata colme ..." itemprop="url" alt="video Video viral mirip livy renata colme ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/qmlnkze35bnntbus.jpg" src="https://img.doodcdn.io/snaps/qmlnkze35bnntbus.jpg" alt="Video viral mirip livy renata colme ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 03:13</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral mirip livy renata colme ...    </h2>
+                                     </article>
+   <article id="video-4111" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral mio mirza" data-frame="vidply.com" data-dom="https://vidply.com/d/hct71p4ji9kh" data-id="hct71p4ji9kh" id="play" class="href" href="javascript:void(0)" title="Video viral mio mirza" itemprop="url" alt="video Video viral mio mirza viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/fgx9j92pgra49iwj.jpg" src="https://img.doodcdn.io/snaps/fgx9j92pgra49iwj.jpg" alt="Video viral mio mirza" itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 06:54</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral mio mirza    </h2>
+                                     </article>
+   <article id="video-4110" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral hijabers baby putie mes ..." data-frame="vidply.com" data-dom="https://vidply.com/d/c0oovmmn4i6p" data-id="c0oovmmn4i6p" id="play" class="href" href="javascript:void(0)" title="Video viral hijabers baby putie mes ..." itemprop="url" alt="video Video viral hijabers baby putie mes ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/0uckge8qi6wuxl05.jpg" src="https://img.doodcdn.io/snaps/0uckge8qi6wuxl05.jpg" alt="Video viral hijabers baby putie mes ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 04:33</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral hijabers baby putie mes ...    </h2>
+                                     </article>
+   <article id="video-4109" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral duta es krim isep putin ..." data-frame="vidply.com" data-dom="https://vidply.com/d/asmdf0uskzkj" data-id="asmdf0uskzkj" id="play" class="href" href="javascript:void(0)" title="Video viral duta es krim isep putin ..." itemprop="url" alt="video Video viral duta es krim isep putin ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/sqtn7irrge0x5qds.jpg" src="https://img.doodcdn.io/snaps/sqtn7irrge0x5qds.jpg" alt="Video viral duta es krim isep putin ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 02:01</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral duta es krim isep putin ...    </h2>
+                                     </article>
+   <article id="video-4108" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral devina mirip banget ari ..." data-frame="vidply.com" data-dom="https://vidply.com/d/ostuif06kcx0" data-id="ostuif06kcx0" id="play" class="href" href="javascript:void(0)" title="Video viral devina mirip banget ari ..." itemprop="url" alt="video Video viral devina mirip banget ari ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/k5i8h3p7b4r7xpdi.jpg" src="https://img.doodcdn.io/snaps/k5i8h3p7b4r7xpdi.jpg" alt="Video viral devina mirip banget ari ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 08:13</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral devina mirip banget ari ...    </h2>
+                                     </article>
+   <article id="video-4107" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral devia andari tiktokers  ..." data-frame="vidply.com" data-dom="https://vidply.com/d/fqbvawybvkks" data-id="fqbvawybvkks" id="play" class="href" href="javascript:void(0)" title="Video viral devia andari tiktokers  ..." itemprop="url" alt="video Video viral devia andari tiktokers  ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/r4dv01azsseesije.jpg" src="https://img.doodcdn.io/snaps/r4dv01azsseesije.jpg" alt="Video viral devia andari tiktokers  ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 02:10</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral devia andari tiktokers  ...    </h2>
+                                     </article>
+   <article id="video-4106" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral chikakiku 20 juta" data-frame="vidply.com" data-dom="https://vidply.com/d/q2rxzqvs5fj0" data-id="q2rxzqvs5fj0" id="play" class="href" href="javascript:void(0)" title="Video viral chikakiku 20 juta" itemprop="url" alt="video Video viral chikakiku 20 juta viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/mivgvm3r352w2lmt.jpg" src="https://img.doodcdn.io/snaps/mivgvm3r352w2lmt.jpg" alt="Video viral chikakiku 20 juta" itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 01:38</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral chikakiku 20 juta    </h2>
+                                     </article>
+   <article id="video-4105" class="related-video" itemscope="" itemtype="https://schema.org/CreativeWork">
+                    <a data-title="Video viral chika aulia ngewe sama  ..." data-frame="vidply.com" data-dom="https://vidply.com/d/o8a7pj4draaw" data-id="o8a7pj4draaw" id="play" class="href" href="javascript:void(0)" title="Video viral chika aulia ngewe sama  ..." itemprop="url" alt="video Video viral chika aulia ngewe sama  ... viral">
+                        <img class="lazy" data-src="https://img.doodcdn.io/snaps/randm3y761nejohx.jpg" src="https://img.doodcdn.io/snaps/randm3y761nejohx.jpg" alt="Video viral chika aulia ngewe sama  ..." itemprop="image">
+                             <i class="fa-solid fa-circle-play"></i>
+                        <span class="metatag"><span class="duration-Doodstream"><i class="fa-regular fa-clock"></i> 12:17</span>
+                        </span>
+                    </a>
+                    <h2 class="related-video-title" itemprop="headline">Video viral chika aulia ngewe sama  ...    </h2>
+                                     </article>
+   </div>   
+
+    <div id="carouselExampleSlideshow" class="carousel slide" data-ride="carousel" data-interval="15000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <iframe id="sponsorFrame1" src="https://mediapemusnah-faktanyata.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame2" src="https://menuju-gong-moqeel-163.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame3" src="https://cryptopop2025.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame4" src="https://celestial-romeo-yoshiday.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame5" src="https://pond-with-kaws.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame6" src="https://pp-naravit.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame7" src="https://ikan-di-dalam-kolam.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame8" src="https://cara-buat-artikel-seo-rawa-buaya.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame9" src="https://cara-menghasilkan-uang-di-internett.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe id="sponsorFrame10" src="https://tempat-jual-ikan-hias-rawa-buaya.blogspot.com" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleSlideshow" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleSlideshow" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="modal fade modal-fullscreen-sm-down" id="view_video_modal" tabindex="-1" aria-labelledby="viewVideoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="texth">Judul Video Akan Muncul Di Sini</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="view_video_frame" src="" title="Video Player" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a id="dl" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            const observer = lozad();
+            observer.observe();
+
+            const carouselSponsor = $('#carouselExampleSlideshow');
+            const totalSponsors = $('.carousel-item iframe').length;
+            const sponsorsVisited = Array(totalSponsors).fill(false);
+            let allVisited = false;
+            let refreshTimeout;
+
+            carouselSponsor.on('slide.bs.carousel', function (e) {
+                const activeItem = $(e.relatedTarget);
+                const activeIndex = $('.carousel-item').index(activeItem);
+
+                sponsorsVisited[activeIndex] = true;
+                allVisited = sponsorsVisited.every(visited => visited);
+
+                clearTimeout(refreshTimeout);
+
+                if (allVisited) {
+                    if (activeIndex === totalSponsors - 1) {
+                        refreshTimeout = setTimeout(refreshSponsors, 30000);
+                    }
+                }
+            });
+
+            function refreshSponsors() {
+                $('.carousel-item.active iframe').each(function() {
+                    this.src = this.src;
+                    console.log('Refreshed iframe: ' + this.id + ' at ' + new Date().toLocaleTimeString());
+                });
+                sponsorsVisited.fill(false);
+                allVisited = false;
+            }
+
+            carouselSponsor.carousel({
+                interval: 15000,
+                ride: 'carousel'
+            });
+
+            const shareButtons = document.querySelectorAll('.share-button');
+            shareButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const shareUrl = this.dataset.url;
+                    const shareTitle = this.closest('.related-video').querySelector('.related-video-title').textContent;
+
+                    if (navigator.share) {
+                        navigator.share({
+                            title: shareTitle,
+                            url: shareUrl
+                        }).then(() => {
+                            console.log('Successfully shared');
+                        }).catch((error) => {
+                            console.error('Error sharing', error);
+                        });
+                    } else {
+                        alert('Web Share API tidak didukung di browser ini. Anda bisa menyalin URL secara manual: ' + shareUrl);
+                    }
+                });
+            });
+
+            $(document).on('click', '#play', function() {
+                var id = $(this).data('id');
+                var title = $(this).data('title');
+                var dom = $(this).data('dom');
+                var dome = $(this).data('frame');
+                $('#view_video_modal').modal('show');
+                $("#view_video_frame").attr('src', 'https://'+dome+'/e/' + id);
+                $("#dl").attr('href', dom);
+                $("#texth").html(title);
+            });
+
+            $('.modal').on('hidden.bs.modal', function (e) {
+                $iframe = $(this).find("iframe");
+                $iframe.attr("src", $iframe.attr("src"));
+            });
+        });
+    </script>
+<script type="text/javascript">
+		$(document).on('click', '#play', function() {
+			var id = $(this).data('id');
+			var title = $(this).data('title');
+			var dom = $(this).data('dom');
+			var dome = $(this).data('frame');
+			$('#view_video_modal').modal('show');
+			let player_pathx = 'https://'+dome+'/e/' + id;
+			let dl_pathx = dom;
+			$("#view_video_frame").attr('src', player_pathx);
+			$("#dl").attr('href', dl_pathx);
+			$("#texth").html(title);
+		})
+		$(function(){
+  $('.modal').on('hidden.bs.modal', function (e) {
+    $iframe = $(this).find("iframe");
+    $iframe.attr("src", $iframe.attr("src"));
+  });
+});
+	</script>
+</body>
+</html>
